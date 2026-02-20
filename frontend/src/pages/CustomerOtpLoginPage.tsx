@@ -49,7 +49,7 @@ export default function CustomerOtpLoginPage() {
           <input
             id="phone"
             type="tel"
-            placeholder="+91XXXXXXXXXX"
+            placeholder="10-digit mobile number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required

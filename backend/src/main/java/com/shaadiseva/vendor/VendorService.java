@@ -96,8 +96,11 @@ public class VendorService {
             throw new SecurityException("Access denied: you do not own this application");
         }
 
-        String safeName = new java.io.File(file.getOriginalFilename()).getName()
-                .replaceAll("[^a-zA-Z0-9._-]", "_");
+        String originalFilename = file.getOriginalFilename();
+        String baseName = (originalFilename != null && !originalFilename.isBlank())
+                ? new java.io.File(originalFilename).getName()
+                : "upload";
+        String safeName = baseName.replaceAll("[^a-zA-Z0-9._-]", "_");
         String key = String.format("vendor-docs/%s/%s/%s",
                 applicationId, docType, safeName);
 
